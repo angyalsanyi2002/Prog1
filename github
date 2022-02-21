@@ -1,0 +1,7 @@
+git init
+GIT-IT
+git clone
+working dir -git add operation- staging dir -git commit operstion- GIt repo
+git status
+git remote add origin [git link]
+git pull
