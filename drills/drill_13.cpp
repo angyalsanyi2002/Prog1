@@ -47,21 +47,22 @@ int main(){
 		win.set_label("My window");
 		win.wait_for_button();
 		
-		Image kep{Point{0,0},"kep.jpg"};
-		kep.set_mask(Point{0,0},100,100);	//kép méretre vágása
-		win.attach(kep);
-		win.set_label("My window");
-		win.wait_for_button();
-		
-		for (int i=0 ; i<8; ++i){	//léptetés négyzetről-négyzetre
-			for (int j=0; j<8; ++j){
-				kep.move(100,0);
-				win.wait_for_button();
-			}
-			kep.move(-700,100);
-			win.wait_for_button();
-			}
+		while (true)
+		{
+		    int randx = rand() % 7 + 1;
+		    randx *= 100; 
+		    int randy = rand() % 7 + 1; 
+		    randy *= 100; 
+		    Image kep (Point(randx,randy),"kep.jpg");
+		    kep.set_mask(Point(0,0),100,100);
+		    win.attach(kep);
+		    win.set_label("My window");
+		    win.wait_for_button();
+		}
+        
 
+
+        win.wait_for_button();
 	}
 	catch (exception& e) {
     	cerr << "exception: " << e.what() << '\n';
