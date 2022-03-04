@@ -9,11 +9,13 @@ using namespace Graph_lib;
 int main(){
 	try {
 		Point t1 {300, 50};
-		Simple_window win (t1, 1000, 800, "My window");
+		Simple_window win (t1, 800, 1000, "My window");
 		win.wait_for_button();
 		
-		int x_size=800;
+		int x_size=800;		//800*800-as rács, 100 pixeles négyzetekkel
 		int y_size=800;
+		int x_grid = 100;
+    		int y_grid = 100;
 		Lines grid;		
 		
 		for(int i=0; i<=800; i+=100)
@@ -25,53 +27,41 @@ int main(){
 		win.attach(grid);
 		win.wait_for_button();
 		
-		/*kitölteni az átló négyzeteket
-			rect r {Point(0,0), 100, 100};
-			r.set_fill_color (Color::red);
-		VAGY
-			for(i=0...8)
-			rect r {Point(i*100, i*100), 100, 100};
-			win.attach(r);
-		VAGY
-			vector <Rectangle*> v;
-			for(i=0...8)
-			win.push_back(new Rectangle(Point(i*100,i*100),100,100));
-			v[v.size()-1], set_fill_color (color::red);
-			win.attach(v[v.size()-1]);
-			
-			new osztaly(constructor)
-			new Rectangle (Point p, hh,ww)		
-		*/
-		//vector <Rectangle*> v;
 		
-		
-		for(int i=0; i<=800; i+=100)
-		{
-		Rectangle r {Point{0+i, 0+i}, 100, 100};
-    		win.attach(r);
-    		r.set_fill_color(Color::red);
-    		//r.set_style(Line_style(Line_style::solid, 0));
-    		//r.set_style(Color(Color::invisible));
-    		win.set_label("My 2nd window");
-    		win.wait_for_button();
-		
+		Vector_ref<Rectangle> rects;	//átló menti négyzetek pirosra festése
+		for (int i = 0; i < x_size; i += x_grid) {
+			rects.push_back(new Rectangle{Point{i,i}, Point{i+x_grid,i+x_grid}});
+			rects[rects.size() - 1].set_color(Color::invisible);
+			rects[rects.size() - 1].set_fill_color(Color::red);
+			win.attach(rects[rects.size() - 1]);
 		}
-		/*
-		Vector_Ref<Graph_lib::Rectangle> vr;
-		for(int i=0; i<8
+
+		win.wait_for_button();
 		
+		Image moon1{Point{0,300}, "moon.jpg"};	//3 kép beillesztése
+		win.attach(moon1);
+		Image moon2{Point{500,0}, "moon.jpg"};
+		win.attach(moon2);
+		Image moon3{Point{300,600}, "moon.jpg"};
+		win.attach(moon3);
+		win.set_label("My window");
+		win.wait_for_button();
 		
-		HÁZI
-		200*200 jpeg v gif
-		set_mask
+		Image kep{Point{0,0},"kep.jpg"};
+		kep.set_mask(Point{0,0},100,100);	//kép méretre vágása
+		win.attach(kep);
+		win.set_label("My window");
+		win.wait_for_button();
 		
-		move fv.
-		VAGY
-		while(true{
-		kép mozgatás
-		wait_for_button();
-		}
-		*/
+		for (int i=0 ; i<8; ++i){	//léptetés négyzetről-négyzetre
+			for (int j=0; j<8; ++j){
+				kep.move(100,0);
+				win.wait_for_button();
+			}
+			kep.move(-700,100);
+			win.wait_for_button();
+			}
+
 	}
 	catch (exception& e) {
     	cerr << "exception: " << e.what() << '\n';
@@ -82,5 +72,6 @@ int main(){
     	return 2;
 	}
 	}
-
-
+/*
+g++ -w -Wall -std=c++11 ./GUI/Graph.cpp ./GUI/Window.cpp ./GUI/GUI.cpp ./GUI/Simple_window.cpp drill_13.cpp `fltk-config --ldflags --use-images` -o a.out
+*/

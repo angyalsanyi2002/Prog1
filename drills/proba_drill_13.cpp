@@ -44,9 +44,9 @@ try {
     win.wait_for_button();
 
     // 4. Add 3 copies of a 200x200 image
-    Image cpp1 {Point{0,300}, "cpp.jpg"};
-    Image cpp2 {Point{300,600}, "cpp.jpg"};
-    Image cpp3 {Point{500,100}, "cpp.jpg"};
+    Image cpp1 {Point{0,300}, "hold.jpg"};
+    Image cpp2 {Point{300,600}, "hold.jpg"};
+    Image cpp3 {Point{500,100}, "hold.jpg"};
 
     win.attach(cpp1);
     win.attach(cpp2);
@@ -54,7 +54,8 @@ try {
     win.wait_for_button();
 
     // 5. Add a 100x100 image and make it move when next is pressed
-    Image apple {Point{0,0}, "apple-logo.jpg"};
+    Image apple {Point{0,0}, "kep.jpg"};
+    kep.set_mask(Point{0,0},100,100);
     win.attach(apple);
     win.wait_for_button();
 
