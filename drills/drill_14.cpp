@@ -6,7 +6,7 @@ class B1 {
 	public:
 		virtual void vf() { cout << "B1::vf()" << endl;}
 		void f() {cout << "B1::f()" << endl;}
-		//virtual void pvf() = 0;		//üres fv, nem értelmezhető, tisztán 			  virtuális-> absztrakt-> absztrakt osztály, nem példányosítható
+		//virtual void pvf() = 0;       //üres fv, nem értelmezhető, tisztán virtuális-> absztrakt-> absztrakt osztály, nem példányosítható
 
 		
 };
