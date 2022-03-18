@@ -17,31 +17,31 @@ class Person{
 			string n = f + l;
 		for (char c : n) {
 			switch(c) {
-				case :';';
-				case :'\'';
-				case :':';
-				case :'"';
-				case :'[';
-				case :']';
-				case :'*';
-				case :'&';
-				case :'^';
-				case :'%';
-				case :'$';
-				case :'#';
-				case :'@';
-				case :'!';
-					throw runtime_error("Invalid character in Person")
+				case ';':
+				case '\'':
+				case ':':
+				case '"':
+				case '[':
+				case ']':
+				case '*':
+				case '&':
+				case '^':
+				case '%':
+				case '$':
+				case '#':
+				case '@':
+				case '!':
+					throw runtime_error("Invalid character in Person");
 					
 					break;
 				default:
 					break;
 				}
-			}
+			};
 		};
 		string first() const {return f;}
 		string last() const {return l;}
-		string name() const {return n;}
+		//string name() const {return n;}
 		int age() const {return a;}
 	private:
 		//string n;
@@ -51,7 +51,7 @@ class Person{
 };
 
 ostream& operator<<(ostream& os, const Person& p){
-	return os << p.first() << " "<< p.last() << p.age();
+	return os << p.first() << " "<< p.last()<<" " << p.age() << '\n';
 }
 
 istream& operator>>(istream& is, Person& p){
@@ -68,50 +68,31 @@ istream& operator>>(istream& is, Person& p){
 	return is;
 }
 
-	int main(){
+int main(){
 	
 	Person p;
 	//p.n = "Goofy";
 	//p.a = 63;
-	p = Person("Goofy", 63);
+	p = Person("Goofy","Brad", 63);
 
-	cout << p.first() << " " << p.last() << " " <<p.age << '\n';
+	cout << p.first() << " " << p.last() << " " <<p.age() << '\n';
 	cout << p << "\n";
 
 	Person p2;
 	Person p3;
 
 	cin >> p2 >> p3;
-	cout << p2 << " " << p3 << '\n';
+	cout << p2 << p3 << '\n';
 	
 	vector <Person> vec;
 	
-	for (Person p; cin >> p;){	//while(cin >> p
+	for (Person p; cin >> p;){
 		if(p.first() == "end") break;
 		vec.push_back(p);
 	}
 	
 	for(Person p: vec){
-		cout << p << endl;
+		cout << p;
 	}
 	return 0;
 }
-
-/*
-cppreference.com
-cout olyan mint az int, változó
-os << Person -os
-cout << P    -os
-cout  <<    p <<   p2   <<    endl;
- os	Person 	  os
- 
- for(Person    p: 	    vec)		/EZ
-      típus  változó         kollekció
-      cout << p;
- 
- for (int i=0; i<=vec.size(); i++)		/ÉS EZ UGYANAZT TUDJA
- 	cout << vec[i];
-
-REFAKTORÁLÁS : adattag, név megváltoztatása, kódunk átszervezése
-
-*/
