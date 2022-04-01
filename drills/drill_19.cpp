@@ -6,10 +6,12 @@ using namespace std;
 template<typename T>
 struct S {
 	S (T vv = 0) : val{vv}{}	//S konstruktora int-et vár, ha nem kap 0-val tölti fel a val-t
-	const T& get();
+	T& get();
+	const T& get() const;
 	void set(T new_t) {val = new_t;};
 	void operator=(const T& s);
-	private:
+	
+private:
 	T val;			//generikus osztálynak számít
 };
 
@@ -34,8 +36,8 @@ void read_val(T& v){
 }
 
 template<typename T>
-std::ostream& operator<<(ostream& os, vector<T>& v){
-	os << " { "";
+ostream& operator<<(ostream& os, vector<T>& v){
+	os << " { ";
 	for(int i=0; i< v.size(); i++){
 		os << v[i] << (i < v.size()-1 ? ", ": " ");
 	}
@@ -44,7 +46,7 @@ std::ostream& operator<<(ostream& os, vector<T>& v){
 }
 
 template<typename T>
-istream& operator<<(istream& is, vector<T>& v){
+istream& operator>>(istream& is, vector<T>& v){
 	char ch = 0;
 	is >> ch;
 	if( ch != '{'){
@@ -67,16 +69,16 @@ int main(){
 	S<char> sc {'c'};
 	S<double> sd {3.2};
 	S<string> ss {"Hello"};
-	S<vector<int>> sv {vector<int>{1, 1, 2, 3, 5, 8}};	//svi típusa s típusú obj, olyan s obj. ami vectort tartalmaz, ami inteket tartalmaz
+	S<vector<int>> svi {vector<int>{1, 1, 2, 3, 5, 8}};	//svi típusa s típusú obj, olyan s obj. ami vectort tartalmaz, ami inteket tartalmaz
 	
-	cout << "S<int> : "  << s.get << endl;
-	cout << "S<int> : "  << si.get << endl;
-	cout << "S<char> : "  << sc.get << endl;
-	cout << "S<double> : "  << sd.get << endl;
-	cout << "S<string> : "  << ss.get << endl;
+	cout << "S<int> : "  << s.get() << endl;
+	cout << "S<int> : "  << si.get() << endl;
+	cout << "S<char> : "  << sc.get() << endl;
+	cout << "S<double> : "  << sd.get() << endl;
+	cout << "S<string> : "  << ss.get() << endl;
 	//cout << "S<vector<int>> : "  << sv.val << endl;
 	
-	for(auto& a : sv.get){
+	for(auto& a : svi.get()){
 		cout << a << ' ';
 	}
 	cout << endl;
@@ -84,7 +86,7 @@ int main(){
 	sc.set('s');
 	cout << "S<char> : " << sc.get() << endl;
 	
-	sd = 42;
+	sd = 42.12;
 	cout << "S<double> : " << sd.get() << endl;
 	
 	int ii;
@@ -99,14 +101,15 @@ int main(){
 	read_val(str);
 	S<string> ss2 {str};
 	
-	cout << "S<int> : "  << si2.get << endl;
-	cout << "S<double> : "  << sd2.get << endl;
-	cout << "S<string> : "  << ss2.get << endl;
+	cout << "S<int> : "  << si2.get() << endl;
+	cout << "S<double> : "  << sd2.get() << endl;
+	cout << "S<string> : "  << ss2.get() << endl;
 	
-	/*vector<int> vec;
+	vector<int> vec;
 	read_val(vec);
 	S<vector<int>> svi2 {vec};
-	*/
+	
 	cout << "S<vector<int>> svi2: " << svi2.get() << endl;
 
+return 0;
 }
