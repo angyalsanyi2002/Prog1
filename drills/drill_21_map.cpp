@@ -36,7 +36,7 @@ try{
 	msi["qwertz"] = 11;
 	msi["ax"] = 1;
 
-	cout  << "MSI map: " << endl;
+	cout  << "msi map: " << endl;
 	print(msi);
 	
 	msi.erase("a");
@@ -52,26 +52,19 @@ try{
 	cout << endl << "msi beolvasás után: " << endl;
 	print(msi);
 	
-	int total = accumulate(msi.begin(), msi.end(), 0,
+	/*int total = accumulate(msi.begin(), msi.end(), 0,
 			[](int sum, const pair<string, int>& p)
 			{return sum += p.second;}
-			);
-	int total2 = 0;
-	for(pair<string, int> a : msi){
-		total2 += a.second;
+			);*/
+	//cout << endl <<"sum of the values in msi: "<< total << endl;
+	
+	int total_1 = 0;
+	for (auto& a: msi){
+		total_1 += a.second;
 	}
-	cout << endl <<"sum of the values in msi: "<< total << endl;
 	
-	/*
-	int sum = 0;
-	for (auto i:msi){
-		//cout << i.second << " ";
-		sum = sum + i.second;
-	
-	}
-	cout << endl <<"sum of the values in msi: "<< sum << endl;
-	*/	
-	
+	cout << endl << "sum of the values in msi: " << total_1 << endl;
+
 	//megcserélük msi-nél a string-et és int-et
 	map<int, string> mis;
 	for(pair<string, int> i : msi){
@@ -88,14 +81,3 @@ try{
 	cerr<< "Unknown exception "<<"\n";
 	return 2;
 }
-
-	
-
-
-
-
-
-
-
-
-

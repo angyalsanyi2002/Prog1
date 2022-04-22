@@ -1,0 +1,10 @@
+ajto 2 26.12
+szek 9 35.2
+konyv 7 3.1415
+asztal 6 99.98
+kes 5 10.2345
+kancso 3 23
+polc 6 7.2
+labfej 9 1.25
+tej 11 6.10
+Miskolc 1 76.345

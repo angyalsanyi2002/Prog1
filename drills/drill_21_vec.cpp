@@ -46,34 +46,35 @@ try{
 	print(vi);
 	
 	for(int i=0; i<vd.size(); i++){
-		cout << vd[i] << '\t';
+		cout << vd[i] << '\t' << vi[i] << endl;
 	}
-	/*
-	//difference between the sum of elements	//for-t megcsinalni
-	int sum_i = 0;
-	for(int i = 0; i < sizeof(vi);i++){
+	
+	//difference between the sum of elements
+	/*int sum_i = 0;
+	for(int i = 0; i < sizeof(vi); i++){
 		sum_i += vi[i];
 	}
-	double sum_d = 0;
-	for(int i = 0; i < sizeof(vd);i++){
+	double sum_d = 0.0;
+	for(int i = 0; i < sizeof(vd); i++){
 		sum_d+=vd[i];
 	}
 	cout << endl;
 	cout << "sum of ints: " << sum_i << '\n' << "sum of doubles: " << sum_d << endl;
 	*/
+	
 	cout << endl;
 	double d_sum = accumulate(vd.begin(),vd.end(),0.0);
 	cout << "sum of doubles: " << d_sum << endl;
 	int i_sum = accumulate(vi.begin(),vi.end(),0);
 	cout << "sum of ints: " << i_sum << endl;
 	//cout << precision(10);
+	cout << "Difference between vd and vi: " << d_sum - i_sum << endl;
 	
 	reverse(vd.begin(), vd.end());
 	print(vd);
 	
 	double vd_mean = d_sum / vd.size();
 	cout << "Mean value of vd: " << vd_mean << endl;
-	
 	
 	//copy if
 	vector<double> vd2(vd.size());

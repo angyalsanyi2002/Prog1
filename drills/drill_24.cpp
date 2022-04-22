@@ -24,16 +24,16 @@ int main()
         cout << "int\t" << sizeof(int *) << '\n';
         cout << "double\t" << sizeof(double *) << '\n';
 
-        // 1 dimenziós mátrixok
+        // egydimenziós mátrix
         cout << "\nMatrix sizes:\n";
         Matrix<int> a(10);
         Matrix<int> b(10);
         Matrix<double> c(10);
 
-        // 2
+        // kétdimenzós mátrix
         Matrix<int, 2> d(10, 10);
 
-        // 3
+        // háromdimenziós mátrix
         Matrix<int, 3> e(10, 10, 10);
 
         cout << "1D int, 10 elem:\t\t" << sizeof(a) << '\n';
@@ -52,52 +52,24 @@ int main()
         cout << "d:\t" << d.size() << '\n';
         cout << "e:\t" << e.size() << '\n';
 
-        /*int i;
-        cout << "\nEnter ints:";
-        while(cin >> i){
-            errno=0;
-            double d = sqrt(i);
-            if(errno==EDOM){
-                cout << "no square root\n";
-            }else{
-                cout << "sqrt(" << i << ") = " << d << '\n';
-            }
-        }
-
-        cin.clear();
-        cin.ignore();
-        */
-
         int number;
         cout << "Write a number: " << endl;
         cin >> number;
         if (number >= 0)
         {
-            cout << sqrt(number) << '\n';
+            cout << "Square root of " << number << " is " << sqrt(number) << '\n';
         }
         else
         {
-            cout << "no square root\n";
+            cout << "No square root\n";
         }
-
-        /*cout << "Enter ten floats " << endl;
-        Matrix<double> m2(10);
-        for (int i = 0; i < m2.size(); ++i)
-        {
-            double num;
-            cin >> num;
-            if (!cin)
-                throw runtime_error("Problem reading from cin");
-            c[i] = num;
-        }
-
-        cout << c;*/
 
         int n, m;
         cout << "\nEnter n:\n";
         cin >> n;
         cout << "Enter m:\n";
         cin >> m;
+        cout << endl;
         Matrix<int, 2> m3(n, m);
 
         for (int i = 1; i <= n; i++)
