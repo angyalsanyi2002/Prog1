@@ -91,6 +91,8 @@ int main(){
 		vec.push_back(p);
 	}
 	
+	cout <<endl;
+
 	for(Person p: vec){
 		cout << p;
 	}

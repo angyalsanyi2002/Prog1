@@ -14,9 +14,10 @@ int main()
     try
     {
 
+        //byte-ban megadja a méreteket
         cout << "sizeof:\n";
         cout << "char\t" << sizeof(char) << '\n';
-        cout << "sort\t" << sizeof(short) << '\n';
+        cout << "short\t" << sizeof(short) << '\n';
         cout << "int\t" << sizeof(int) << '\n';
         cout << "long\t" << sizeof(long) << '\n';
         cout << "float\t" << sizeof(float) << '\n';
@@ -52,6 +53,7 @@ int main()
         cout << "d:\t" << d.size() << '\n';
         cout << "e:\t" << e.size() << '\n';
 
+        //négyzetgyök meghatározása
         int number;
         cout << "Write a number: " << endl;
         cin >> number;
@@ -64,6 +66,7 @@ int main()
             cout << "No square root\n";
         }
 
+        //n*m mátrix létrehozása
         int n, m;
         cout << "\nEnter n:\n";
         cin >> n;
@@ -76,11 +79,11 @@ int main()
         {
             for (int j = 1; j <= m; j++)
             {
-                m3(i - 1, j - 1) = i * j;
+                m3(i - 1, j - 1) = i * j;   //soronként tölti fel a mátrixot
             }
         }
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) //mátrix kiíratása
         {
             for (int j = 0; j < m; j++)
             {
@@ -91,7 +94,7 @@ int main()
 
         Matrix<complex<double>> mcomp(10);
 
-        cout << "\nEnter 10 complex number (Re Im):\n";
+        cout << "\nEnter 10 complex number (Re Im):\n"; //komplex szamok megadása
         complex<double> comp;
         for (int i = 0; i < 10; ++i)
         {
@@ -101,7 +104,7 @@ int main()
             mcomp[i] = comp;
         }
 
-        complex<double> sum;
+        complex<double> sum;    //összeadja a komplex számokat
         for (Index i = 0; i < mcomp.size(); ++i)
         {
             sum += mcomp[i];
@@ -110,12 +113,12 @@ int main()
 
         Matrix<int, 2> mx(2, 3);
 
-        cout << "Please, enter 6 number" << endl;
+        cout << "Please, enter 6 number" << endl;   //6 szám a 2*3-as mátrixhoz
         for (int i = 0; i < 2; ++i)
         {
             for (int j = 0; j < 3; ++j)
             {
-                cin >> mx(i, j);
+                cin >> mx(i, j);    //soronként kéri be a számokat
             }
         }
         cout << endl;

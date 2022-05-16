@@ -49,7 +49,7 @@ template<typename T>
 istream& operator>>(istream& is, vector<T>& v){
 	char ch = 0;
 	is >> ch;
-	if( ch != '{'){
+	if( ch != '{'){		//vector elemeinek bekerese
 		is.unget();
 		return is;
 	}
@@ -69,7 +69,8 @@ int main(){
 	S<char> sc {'c'};
 	S<double> sd {3.2};
 	S<string> ss {"Hello"};
-	S<vector<int>> svi {vector<int>{1, 1, 2, 3, 5, 8}};	//svi típusa s típusú obj, olyan s obj. ami vectort tartalmaz, ami inteket tartalmaz
+	S<vector<int>> svi {vector<int>{1, 1, 2, 3, 5, 8}};	//svi típusa s típusú obj, olyan s obj. ami vectort tartalmaz,
+	// ami inteket tartalmaz
 	
 	cout << "S<int> : "  << s.get() << endl;
 	cout << "S<int> : "  << si.get() << endl;
@@ -90,14 +91,17 @@ int main(){
 	cout << "S<double> : " << sd.get() << endl;
 	
 	int ii;
+	cout << "Enter an integer: ";
 	read_val(ii);
 	S<int> si2 {ii};
 	
 	double dd;
+	cout << "Enter a double: ";
 	read_val(dd);
 	S<double> sd2 {dd};
 	
 	string str;
+	cout << "Enter a string: ";
 	read_val(str);
 	S<string> ss2 {str};
 	
@@ -106,7 +110,7 @@ int main(){
 	cout << "S<string> : "  << ss2.get() << endl;
 	
 	vector<int> vec;
-	read_val(vec);
+	read_val(vec);	// pl {1, 2, 3}
 	S<vector<int>> svi2 {vec};
 	
 	cout << "S<vector<int>> svi2: " << svi2.get() << endl;

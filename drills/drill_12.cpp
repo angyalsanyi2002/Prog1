@@ -56,7 +56,7 @@ try{
 	poly.set_style(Line_style::dash); //szagatott vonal
 	win.attach(poly);
 	
-	win.set_label("My window #5");
+	//win.set_label("My window #5");
 	win.wait_for_button();
 	
 	Rectangle r{Point{200,200}, 100, 50};  //bal felső sarok, szélesség, magasság

@@ -16,7 +16,7 @@ void print(const C& c){
 }
 
 template<typename C>
-void inc(C& c, int n){
+void inc(C& c, int n){	//C-nek egy példánya, c egy konténert jelöl
 	for(auto& i : c){
 	i += n;
 	}
@@ -24,14 +24,21 @@ void inc(C& c, int n){
 
 template<typename Iter1, typename Iter2>
 // requires Input_iterator<Iter1>() && Output_iterator<Iter2>()
-Iter2 orai_copy(Iter1 f1, Iter1 e1, Iter2 f2){
+Iter2 orai_copy(Iter1 f1, Iter1 e1, Iter2 f2){	//mit(mettől, meddig), hova másolunk
 	for(Iter1 p = f1; p != e1; ++p){
-		*f2++ = *p;		//először *f2 = *p, utána fogja *f2-t növelni
+		*f2++ = *p;		//először *f2 = *p, utána fogja *f2-t növelni, '*' kell mmivel értéket másolok át
 	}
 	return f2;
 
 }
 
+//vedes feladata
+void print2(vector<int> const &vi2)
+{
+    for (auto vit3 = vi2.begin(); vit3 != vi2.end(); vit3++) {
+        cout << *vit3 << ' ';
+    }
+}
 
 
 int main()
@@ -45,7 +52,7 @@ try {
 	
 	//feltöltjük a tömböt, vectort, listát
 	array<int, size> ai;
-	copy(arr, arr + size, ai.begin());
+	copy(arr, arr + size, ai.begin());	//mettől, meddig, hova
 	cout << "array: "; print(ai);
 	
 	vector<int> vi(size);
@@ -88,21 +95,29 @@ try {
 	vector<int>::iterator vit;
 	vit = std::find(vi2.begin(), vi2.end(), 3);
 	if( vit != vi2.end()){
-		cout << "Found at " << distance(vi2.begin(), vit) << endl;
+		cout << "3 is found at " << distance(vi2.begin(), vit) << endl;
 	}
 	else {
-		cout << "Not found" << endl;
+		cout << "3 is not found" << endl;
 	}
 	//27-es értéket keressük
 	vector<int>::iterator vit2;
-	vit2 = std::find(vi2.begin(), vi2.end(), 27);
+	vit2 = std::find(vi2.begin(), vi2.end(), 27);	//iteratort ad a tartomány első elemére, ami megfelel a feltételnek
 	if( vit2 != vi2.end()){
-		cout << "Found at " << distance(vi2.begin(), vit2) << endl;
+		cout << "27 is found at " << distance(vi2.begin(), vit2) << endl;	//távolság a tart. első elemétől a megadott elemig
 	}
 	else {
-		cout << "Not found" << endl;
+		cout << "27 is not found" << endl;
 	}
-		
+
+
+	//bejaras iteratorral ami kiirja vi2 elemeit
+	cout << "vi2 elemei: ";
+	print2(vi2);
+	cout << endl;
+
+
+
 }
 catch (exception& e) {
     cerr << "Exception: " << e.what() << '\n';
